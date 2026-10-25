@@ -1,4 +1,10 @@
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
+import {
+  Section,
+  SectionContainer,
+  SectionIntro,
+} from "@/components/ui/section";
+import { CheckCircleIcon } from "@/components/ui/check-circle-icon";
 
 const modules = [
   {
@@ -32,57 +38,46 @@ const modules = [
 
 export default function AgendaSection() {
   return (
-    <section
-      id="lo-trinh"
-      className="scroll-mt-24 bg-poster-section py-16 md:scroll-mt-28 md:py-24"
-    >
-      <div className="container mx-auto px-5 md:px-4">
+    <Section id="lo-trinh">
+      <SectionContainer width="wide">
         <Reveal>
-          <div className="mx-auto mb-12 max-w-2xl space-y-4 text-center md:mb-16">
-            <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-brand-gold)]">
-              Nội dung workshop
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              2 giờ — đi thẳng vào{" "}
-              <span className="text-[var(--color-pizza-red)]">
-                PRODUCT · CONTENT · FUNNEL
-              </span>
-            </h2>
-            <p className="text-lg leading-relaxed text-white/75">
-              Giống thông điệp trên hộp pizza trong poster: bạn sẽ nối sản phẩm,
-              nội dung và quy trình chuyển đổi thành một mạch thống nhất.
-            </p>
-          </div>
+          <SectionIntro
+            label="Nội dung workshop"
+            labelTone="gold"
+            title={
+              <>
+                2 giờ — đi thẳng vào{" "}
+                <span className="text-[var(--color-accent-red)]">
+                  PRODUCT · CONTENT · FUNNEL
+                </span>
+              </>
+            }
+            description="Nối sản phẩm, nội dung và quy trình chuyển đổi thành một mạch thống nhất — giống thông điệp trên poster workshop."
+          />
         </Reveal>
 
-        <Stagger className="mx-auto max-w-5xl space-y-6">
+        <Stagger className="flex flex-col gap-6">
           {modules.map((mod, index) => (
             <StaggerItem key={mod.title}>
-              <article
-                className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-[var(--color-surface-elevated)] p-6 md:flex-row md:items-start md:gap-8"
-              >
+              <article className="card-surface agenda-card flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
                 <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-pizza-red)] text-lg font-bold text-white shadow-[0_8px_24px_rgba(227,24,55,0.3)]"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-accent-red)] text-lg font-bold text-white shadow-[0_8px_24px_rgba(229,57,53,0.3)]"
+                  aria-hidden
                 >
                   {index + 1}
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-medium uppercase tracking-wider text-white/50">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
                     {mod.time}
                   </p>
-                  <h3 className="mt-1 text-xl font-bold text-white">
-                    {mod.title}
-                  </h3>
-                  <ul className="mt-4 space-y-2 text-white/70">
+                  <h3 className="mt-1 text-xl font-bold">{mod.title}</h3>
+                  <ul className="mt-4 flex flex-col gap-2 text-body">
                     {mod.points.map((p) => (
-                      <li key={p} className="flex gap-2">
-                        <span
-                          className="text-[var(--color-brand-gold)]"
-                          aria-hidden
-                        >
-                          ▸
-                        </span>
-                        {p}
+                      <li key={p} className="flex gap-3">
+                        <CheckCircleIcon
+                          className="mt-0.5 text-[var(--color-accent-gold)]"
+                        />
+                        <span>{p}</span>
                       </li>
                     ))}
                   </ul>
@@ -91,7 +86,7 @@ export default function AgendaSection() {
             </StaggerItem>
           ))}
         </Stagger>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }

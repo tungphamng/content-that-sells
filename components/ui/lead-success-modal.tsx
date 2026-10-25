@@ -36,18 +36,15 @@ export function LeadSuccessModal({
     >
       <button
         type="button"
-        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-[rgba(13,13,13,0.75)] backdrop-blur-sm"
         aria-label="Đóng"
         onClick={onClose}
       />
-      <div className="relative max-w-md w-full rounded-2xl border border-white/10 bg-[var(--color-surface-elevated)] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.6)]">
-        <h3
-          id="success-title"
-          className="text-2xl font-bold text-white"
-        >
+      <div className="relative max-w-md w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-8 shadow-[0_24px_64px_rgba(0,0,0,0.55)]">
+        <h3 id="success-title" className="text-2xl font-bold">
           Đã nhận đăng ký! 🎉
         </h3>
-        <p className="mt-3 text-white/75 leading-relaxed">
+        <p className="mt-4 text-body">
           Kiểm tra email và tham gia group Zalo để nhận link Zoom. Hẹn bạn
           <strong className="text-white"> 9h00 Thứ 7, 31/10</strong> — đừng quên thêm lịch nhé.
         </p>

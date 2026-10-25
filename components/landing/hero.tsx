@@ -5,7 +5,8 @@ import { Button, RegisterCtaButton } from "@/components/ui/button";
 import { AmbientOrbs } from "@/components/ui/ambient-orbs";
 import { Reveal } from "@/components/ui/reveal";
 import { MakeItLaunchTitle } from "@/components/ui/make-it-launch-title";
-import { WORKSHOP_HERO_SRC } from "@/lib/constants";
+import { Section, SectionContainer } from "@/components/ui/section";
+import { WORKSHOP_POSTER_SRC } from "@/lib/constants";
 import { scrollToHash } from "@/lib/scroll-to-section";
 
 const trustItems = [
@@ -16,35 +17,40 @@ const trustItems = [
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-mesh-animated text-white">
+    <Section
+      variant="mesh"
+      className="relative overflow-hidden !py-12 md:!py-16 lg:!py-20"
+    >
       <AmbientOrbs variant="hero" />
-      <div className="container relative mx-auto grid gap-12 px-5 py-16 md:px-4 md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+      <SectionContainer className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12">
         <Reveal>
-          <div className="space-y-6">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/70">
+          <div className="flex flex-col gap-6">
+            <p className="section-label text-[var(--color-text-muted)]">
               Free Workshop Online
             </p>
             <MakeItLaunchTitle size="hero" className="block" />
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+            <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
               Content That{" "}
               <span className="text-gold-shimmer">Sells</span>
             </h1>
-            <p className="text-lg leading-relaxed text-white/85 text-justify-vi max-w-xl">
+            <p className="max-w-xl text-body text-justify-vi text-[var(--color-text-muted)]">
               Chủ đề: Cách tạo dựng{" "}
-              <strong className="text-white">chuỗi bài content</strong>{" "}
+              <strong className="text-[var(--foreground)]">
+                chuỗi bài content
+              </strong>{" "}
               &ldquo;chuyển đổi cao&rdquo;, thu hút đúng khách hàng đến sự kiện
-              bán hàng, webinar, workshop của bạn — không cần đu trend vô
-              nghĩa hay đăng bài ngẫu hứng mỗi ngày.
+              bán hàng, webinar, workshop của bạn — không cần đu trend vô nghĩa
+              hay đăng bài ngẫu hứng mỗi ngày.
             </p>
 
-            <ul className="space-y-3">
+            <ul className="flex flex-col gap-3">
               {trustItems.map((item) => (
                 <li
                   key={item}
-                  className="flex gap-3 text-sm md:text-base text-white/90"
+                  className="flex gap-3 text-sm text-[var(--color-text-muted)] md:text-base"
                 >
                   <span
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-pizza-red)]/25 text-xs text-[var(--color-pizza-red)]"
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-red)]/20 text-xs font-bold text-[var(--color-accent-red)]"
                     aria-hidden
                   >
                     ✓
@@ -54,7 +60,7 @@ export default function HeroSection() {
               ))}
             </ul>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <RegisterCtaButton size="lg" className="w-full sm:w-auto" />
               <Button
                 variant="outline-light"
@@ -66,61 +72,75 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            <p className="text-sm text-[var(--color-pizza-red)] font-medium">
-              ⚡ Chỉ còn vài chục suất — ưu tiên người đăng ký sớm
+            <p className="text-sm font-semibold text-[var(--color-accent-red)]">
+              Chỉ còn vài chục suất — ưu tiên người đăng ký sớm
             </p>
           </div>
         </Reveal>
 
         <Reveal delay={0.12}>
-          <div className="relative mx-auto max-w-md lg:max-w-none">
-            <div className="peephole-ring relative mx-auto aspect-square w-full max-w-[340px] overflow-hidden md:max-w-[400px]">
+          <div className="hero-visual-anchor">
+            <div className="hero-peephole-glow" aria-hidden />
+            <div className="peephole-ring hero-peephole-frame mx-auto lg:mx-0 lg:ml-auto">
               <Image
-                src={WORKSHOP_HERO_SRC}
-                alt="Workshop Content That Sells — MAKE IT LAUNCH"
+                src={WORKSHOP_POSTER_SRC}
+                alt="Workshop Content That Sells — visual hộp pizza MAKE IT LAUNCH"
                 fill
-                className="object-cover object-[center_20%] scale-105"
-                sizes="(max-width: 768px) 90vw, 400px"
+                className="object-cover object-[center_22%] scale-[1.15]"
+                sizes="(max-width: 1024px) 88vw, 384px"
                 priority
               />
             </div>
             <div
-              className="absolute -bottom-4 left-1/2 w-[90%] -translate-x-1/2 rounded-2xl border border-white/15 bg-black/60 px-4 py-3 backdrop-blur-md"
+              className="hero-event-badge relative z-10 mt-4 w-full rounded-2xl px-4 py-3 sm:px-5 sm:py-4 lg:absolute lg:bottom-0 lg:mt-0 lg:translate-y-[16%]"
             >
               <HeroEventInfoBar />
             </div>
           </div>
         </Reveal>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }
 
 function HeroEventInfoBar() {
   return (
-    <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2 sm:gap-4">
-      <div className="flex items-start gap-2 text-white/90">
-        <span className="text-[var(--color-brand-gold)]" aria-hidden>
+    <div className="hero-event-info text-sm">
+      <div className="hero-event-info__time flex items-start gap-2.5">
+        <span
+          className="mt-0.5 shrink-0 text-base text-[var(--color-accent-gold-bright)]"
+          aria-hidden
+        >
           ↘
         </span>
-        <div>
-          <p className="text-[10px] uppercase tracking-wider text-white/50">
+        <div className="min-w-0">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
             Thời gian
           </p>
-          <p className="font-medium">9h00 – 11h00</p>
-          <p className="text-white/75">Thứ 7, ngày 31/10</p>
+          <p
+            className="mt-1 text-[13px] font-semibold leading-tight text-[var(--foreground)] md:text-sm md:whitespace-nowrap"
+          >
+            9h00 – 11h00{" "}
+            <span className="font-normal text-[var(--color-text-muted)]">|</span>{" "}
+            Thứ 7, ngày 31/10
+          </p>
         </div>
       </div>
-      <div className="flex items-start gap-2 text-white/90">
-        <span className="text-[var(--color-brand-gold)]" aria-hidden>
+
+      <div className="hero-event-info__location flex items-start gap-2.5">
+        <span
+          className="mt-0.5 shrink-0 text-base text-[var(--color-accent-gold-bright)]"
+          aria-hidden
+        >
           ◎
         </span>
-        <div>
-          <p className="text-[10px] uppercase tracking-wider text-white/50">
+        <div className="shrink-0">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
             Địa điểm
           </p>
-          <p className="font-medium">Zoom (online)</p>
-          <p className="text-white/75">Link gửi trong group Zalo</p>
+          <p className="mt-1 whitespace-nowrap text-sm font-semibold leading-snug text-[var(--foreground)]">
+            Zoom (online)
+          </p>
         </div>
       </div>
     </div>

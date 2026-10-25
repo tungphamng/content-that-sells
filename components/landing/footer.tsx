@@ -1,16 +1,17 @@
 import Image from "next/image";
+import { SectionContainer } from "@/components/ui/section";
 import { BRAND_LOGO_SRC } from "@/lib/constants";
 
 export default function FooterSection() {
   return (
-    <footer className="border-t border-white/10 bg-black py-10 text-white/70">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-5 text-center sm:flex-row sm:text-left md:px-4">
-        <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:gap-4">
+    <footer className="border-t border-[var(--color-border)] bg-[var(--background)] py-8 text-[var(--color-text-muted)] md:py-10">
+      <SectionContainer className="flex flex-col items-center justify-between gap-6 sm:flex-row sm:text-left">
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
           <Image
             src={BRAND_LOGO_SRC}
             alt=""
-            width={36}
-            height={36}
+            width={32}
+            height={32}
             className="h-8 w-8 object-contain opacity-90"
             aria-hidden
           />
@@ -22,11 +23,11 @@ export default function FooterSection() {
           href="https://facebook.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full border border-white/20 px-4 py-2 text-sm transition-colors hover:border-[var(--color-brand-gold)] hover:text-white"
+          className="inline-flex min-h-10 items-center rounded-full border border-[var(--color-border-strong)] px-4 py-2 text-sm transition-colors hover:border-[var(--color-accent-gold)] hover:text-white"
         >
           Facebook
         </a>
-      </div>
+      </SectionContainer>
     </footer>
   );
 }

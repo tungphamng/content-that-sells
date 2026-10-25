@@ -1,0 +1,79 @@
+.alt-landing {
+  --alt-rail: rgba(255, 255, 255, 0.06);
+}
+
+.alt-hero-visual {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .alt-hero-visual {
+    border-radius: 2rem 0 0 2rem;
+    margin-right: calc(50% - 50vw);
+    min-height: 32rem;
+  }
+}
+
+.alt-hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 13, 13, 0.85) 0%,
+    transparent 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .alt-hero-visual::after {
+    background: linear-gradient(
+      90deg,
+      rgba(13, 13, 13, 0.92) 0%,
+      rgba(13, 13, 13, 0.35) 35%,
+      transparent 65%
+    );
+  }
+}
+
+.alt-bento-feature {
+  grid-column: span 2;
+}
+
+@media (min-width: 768px) {
+  .alt-bento-feature {
+    grid-row: span 2;
+  }
+}
+
+.alt-timeline-rail {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(229, 57, 53, 0.5) 20%,
+    rgba(212, 175, 55, 0.5) 50%,
+    rgba(229, 57, 53, 0.5) 80%,
+    transparent
+  );
+}
+
+.alt-sticky-form {
+  position: sticky;
+  top: 6.5rem;
+}
+
+.alt-mobile-cta {
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
+}

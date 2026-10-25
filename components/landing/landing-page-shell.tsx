@@ -7,12 +7,13 @@ import AgendaSection from "@/components/landing/agenda";
 import FaqSection from "@/components/landing/faq";
 import LeadCaptureSection from "@/components/landing/lead-capture";
 import FooterSection from "@/components/landing/footer";
+import { SectionContainer } from "@/components/ui/section";
 
 function SectionDivider() {
   return (
-    <div className="container mx-auto px-5 md:px-4">
-      <div className="section-glow-line" />
-    </div>
+    <SectionContainer className="py-0">
+      <div className="section-glow-line" aria-hidden />
+    </SectionContainer>
   );
 }
 

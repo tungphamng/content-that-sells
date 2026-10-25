@@ -12,7 +12,7 @@ export default function SocialProofMarqueeSection() {
 
   return (
     <div
-      className="overflow-hidden border-y border-[var(--color-pizza-red)]/30 bg-[var(--color-pizza-red)] py-3"
+      className="overflow-hidden border-y border-[var(--color-accent-red)]/25 bg-[var(--color-accent-red)] py-4"
       aria-hidden
     >
       <div className="flex w-max marquee-scroll gap-12 whitespace-nowrap px-4">

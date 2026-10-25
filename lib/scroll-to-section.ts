@@ -1,3 +1,5 @@
+import { CTA_REGISTER_HREF } from "@/lib/constants";
+
 export const HEADER_OFFSET = 88;
 
 export function scrollToHash(hash: string) {
@@ -9,5 +11,5 @@ export function scrollToHash(hash: string) {
 }
 
 export function scrollToRegisterSection() {
-  scrollToHash("#dang-ky");
+  scrollToHash(CTA_REGISTER_HREF);
 }

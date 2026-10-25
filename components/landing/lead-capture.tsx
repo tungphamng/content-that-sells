@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { AmbientOrbs } from "@/components/ui/ambient-orbs";
 import { Reveal } from "@/components/ui/reveal";
 import { LeadSuccessModal } from "@/components/ui/lead-success-modal";
+import { Section, SectionContainer } from "@/components/ui/section";
 
 export default function LeadCaptureSection() {
   const [name, setName] = useState("");
@@ -23,28 +24,29 @@ export default function LeadCaptureSection() {
 
   return (
     <>
-      <section
-        id="dang-ky"
-        className="relative scroll-mt-24 overflow-hidden bg-mesh-animated py-16 text-white md:scroll-mt-28 md:py-24"
+      <Section
+        id="register-form"
+        variant="mesh"
+        className="relative overflow-hidden"
       >
         <AmbientOrbs variant="cta" />
-        <div className="container relative mx-auto px-5 md:px-4">
-          <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2 lg:items-center">
+        <SectionContainer width="wide" className="relative">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
             <Reveal>
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-white/60">
+              <p className="section-label text-[var(--color-text-subtle)]">
                 Giữ chỗ ngay
               </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="section-title mt-2 text-left">
                 Đăng ký{" "}
                 <span className="text-gold-shimmer">Content That Sells</span>
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-white/85 text-justify-vi">
+              <p className="mt-4 text-body text-justify-vi text-[var(--color-text-muted)]">
                 Điền form bên cạnh — team gửi link Zoom và hướng dẫn vào group
-                Zalo trong 24h. Hãy dùng email bạn check thường xuyên để không
-                bỏ lỡ nhắc lịch trước ngày{" "}
-                <strong className="text-white">31/10</strong>.
+                Zalo trong 24h. Dùng email bạn check thường xuyên để không bỏ
+                lỡ nhắc lịch trước ngày{" "}
+                <strong className="text-[var(--foreground)]">31/10</strong>.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-white/80">
+              <ul className="mt-6 flex flex-col gap-2 text-sm text-[var(--color-text-muted)]">
                 <li>✓ Sự kiện: 9h00 – 11h00, Thứ 7, 31/10</li>
                 <li>✓ Online qua Zoom — miễn phí 100%</li>
                 <li>✓ Tặng template chuỗi content + checklist</li>
@@ -54,13 +56,13 @@ export default function LeadCaptureSection() {
             <Reveal delay={0.1}>
               <form
                 onSubmit={handleSubmit}
-                className="kit-form-wrapper kit-form-wrapper--dark rounded-2xl border border-white/15 bg-black/50 p-6 backdrop-blur-md md:p-8"
+                className="kit-form-wrapper kit-form-wrapper--dark rounded-2xl border border-[var(--color-border)] bg-[rgba(18,18,18,0.85)] p-6 backdrop-blur-md md:p-8"
               >
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   <div>
                     <label
                       htmlFor="name"
-                      className="mb-1.5 block text-sm font-medium text-white/90"
+                      className="mb-2 block text-sm font-medium text-[var(--foreground)]"
                     >
                       Họ và tên *
                     </label>
@@ -76,7 +78,7 @@ export default function LeadCaptureSection() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="mb-1.5 block text-sm font-medium text-white/90"
+                      className="mb-2 block text-sm font-medium text-[var(--foreground)]"
                     >
                       Email *
                     </label>
@@ -93,7 +95,7 @@ export default function LeadCaptureSection() {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="mb-1.5 block text-sm font-medium text-white/90"
+                      className="mb-2 block text-sm font-medium text-[var(--foreground)]"
                     >
                       Số Zalo (tuỳ chọn)
                     </label>
@@ -110,18 +112,18 @@ export default function LeadCaptureSection() {
                   type="submit"
                   variant="red"
                   size="lg"
-                  className="mt-6 w-full rounded-full glow-pulse-red"
+                  className="mt-6 w-full rounded-full glow-pulse-red transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(229,57,53,0.4)]"
                 >
                   Xác nhận đăng ký miễn phí
                 </Button>
-                <p className="mt-3 text-center text-xs text-white/50">
+                <p className="mt-4 text-center text-xs text-[#9CA3AF]">
                   Bạn có thể huỷ nhận tin bất cứ lúc nào. Không spam.
                 </p>
               </form>
             </Reveal>
           </div>
-        </div>
-      </section>
+        </SectionContainer>
+      </Section>
 
       <LeadSuccessModal
         open={showSuccess}

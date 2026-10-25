@@ -17,9 +17,7 @@ export const metadata: Metadata = {
     title: "Content That Sells — Free Workshop Online",
     description:
       "Chuỗi content chuyển đổi cao cho webinar, workshop & sự kiện bán hàng.",
-    images: [
-      { url: "/76a1b93a-19a1-474e-9013-7d1caca4d045.jpg" },
-    ],
+    images: [{ url: "/workshop-poster.png" }],
   },
 };
 

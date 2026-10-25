@@ -2,6 +2,12 @@
 
 import { useState } from "react";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
+import {
+  Section,
+  SectionContainer,
+  SectionIntro,
+} from "@/components/ui/section";
+import { ChevronDownIcon } from "@/components/ui/chevron-down-icon";
 import { cn } from "@/lib/utils/cn";
 
 const faqs = [
@@ -27,60 +33,80 @@ const faqs = [
   },
 ];
 
+function FaqItem({
+  question,
+  answer,
+  expanded,
+  onToggle,
+  id,
+}: {
+  question: string;
+  answer: string;
+  expanded: boolean;
+  onToggle: () => void;
+  id: string;
+}) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
+      <button
+        type="button"
+        id={`${id}-trigger`}
+        className="flex min-h-14 w-full items-center justify-between gap-4 px-4 py-4 text-left font-semibold md:px-6"
+        aria-expanded={expanded}
+        aria-controls={`${id}-panel`}
+        onClick={onToggle}
+      >
+        {question}
+        <ChevronDownIcon expanded={expanded} />
+      </button>
+      <div
+        id={`${id}-panel`}
+        role="region"
+        aria-labelledby={`${id}-trigger`}
+        className={cn(
+          "grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none",
+          expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+        )}
+      >
+        <div className="overflow-hidden" aria-hidden={!expanded}>
+          <p
+            className="border-t border-[var(--color-border)] px-4 py-4 text-body text-justify-vi md:px-6"
+          >
+            {answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section
-      id="faq"
-      className="scroll-mt-24 bg-poster-section-alt py-16 md:scroll-mt-28 md:py-24"
-    >
-      <div className="container mx-auto px-5 md:px-4">
+    <Section id="faq" variant="elevated">
+      <SectionContainer width="narrow">
         <Reveal>
-          <div className="mx-auto mb-12 max-w-2xl space-y-4 text-center md:mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Câu hỏi thường gặp
-            </h2>
-            <p className="text-lg text-white/70">
-              Còn thắc mắc? Đăng ký trước — hỏi trực tiếp trong buổi live.
-            </p>
-          </div>
+          <SectionIntro
+            title="Câu hỏi thường gặp"
+            description="Còn thắc mắc? Đăng ký trước — hỏi trực tiếp trong buổi live."
+          />
         </Reveal>
 
-        <Stagger className="mx-auto max-w-3xl space-y-3">
-          {faqs.map((item, i) => {
-            const expanded = open === i;
-            return (
-              <StaggerItem key={item.q}>
-                <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-                  <button
-                    type="button"
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-white transition-colors hover:bg-white/5"
-                    aria-expanded={expanded}
-                    onClick={() => setOpen(expanded ? null : i)}
-                  >
-                    {item.q}
-                    <span
-                      className={cn(
-                        "text-[var(--color-brand-gold)] transition-transform",
-                        expanded && "rotate-45",
-                      )}
-                      aria-hidden
-                    >
-                      +
-                    </span>
-                  </button>
-                  {expanded && (
-                    <p className="border-t border-white/10 px-5 py-4 text-white/70 leading-relaxed text-justify-vi">
-                      {item.a}
-                    </p>
-                  )}
-                </div>
-              </StaggerItem>
-            );
-          })}
+        <Stagger className="flex flex-col gap-3">
+          {faqs.map((item, i) => (
+            <StaggerItem key={item.q}>
+              <FaqItem
+                id={`faq-item-${i}`}
+                question={item.q}
+                answer={item.a}
+                expanded={open === i}
+                onToggle={() => setOpen(open === i ? null : i)}
+              />
+            </StaggerItem>
+          ))}
         </Stagger>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }
