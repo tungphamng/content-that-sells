@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   experimental: {
     agentFeedback: true,
   },
-  cacheComponents: true,
-  partialPrefetching: true,
+  // cacheComponents + partialPrefetching can cause Vercel 404 on hard navigation;
+  // re-enable after Vercel/Next fully supports your route setup.
   turbopack: {
     rules: {
       "*.css": {
