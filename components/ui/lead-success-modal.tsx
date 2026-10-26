@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button";
 export function LeadSuccessModal({
   open,
   onClose,
+  zaloJoinUrl,
 }: {
   open: boolean;
   onClose: () => void;
+  zaloJoinUrl?: string | null;
 }) {
   useEffect(() => {
     if (!open) return;
@@ -26,6 +28,8 @@ export function LeadSuccessModal({
   }, [open, onClose]);
 
   if (!open) return null;
+
+  const trimmedJoinUrl = zaloJoinUrl?.trim();
 
   return createPortal(
     <div
@@ -45,16 +49,33 @@ export function LeadSuccessModal({
           Đã nhận đăng ký! 🎉
         </h3>
         <p className="mt-4 text-body">
-          Kiểm tra email và tham gia group Zalo để nhận link Zoom. Hẹn bạn
-          <strong className="text-white"> 9h00 Thứ 7, 31/10</strong> — đừng quên thêm lịch nhé.
+          Bước tiếp theo: nhấn vào link bên dưới để tham gia{" "}
+          <strong className="text-white">group Zalo của sự kiện</strong> — bạn
+          sẽ nhận link Zoom, tài liệu và nhắc lịch trước{" "}
+          <strong className="text-white">9h00 Thứ 7, 31/10</strong>.
         </p>
+        {trimmedJoinUrl ? (
+          <a
+            href={trimmedJoinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[var(--color-accent-red)] px-6 py-3 text-base font-semibold text-white shadow-[0_8px_24px_rgba(229,57,53,0.35)] transition-all duration-300 hover:bg-[var(--color-accent-red-hover)] hover:scale-[1.02]"
+          >
+            Tham gia group Zalo
+          </a>
+        ) : (
+          <p className="mt-4 text-sm text-[var(--color-text-muted)]">
+            Nếu chưa thấy link, vui lòng kiểm tra email hoặc liên hệ team hỗ
+            trợ.
+          </p>
+        )}
         <Button
-          variant="red"
+          variant="outline-light"
           size="md"
-          className="mt-6 w-full rounded-full"
+          className="mt-3 w-full rounded-full"
           onClick={onClose}
         >
-          Tuyệt — đã hiểu
+          Đóng
         </Button>
       </div>
     </div>,

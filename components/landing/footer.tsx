@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SectionContainer } from "@/components/ui/section";
-import { BRAND_LOGO_SRC } from "@/lib/constants";
+import { BRAND_LOGO_SRC, FACEBOOK_PAGE_URL } from "@/lib/constants";
 
 export default function FooterSection() {
   return (
@@ -20,7 +20,7 @@ export default function FooterSection() {
           </p>
         </div>
         <a
-          href="https://facebook.com"
+          href={FACEBOOK_PAGE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex min-h-10 items-center rounded-full border border-[var(--color-border-strong)] px-4 py-2 text-sm transition-colors hover:border-[var(--color-accent-gold)] hover:text-white"

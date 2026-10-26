@@ -22,7 +22,7 @@ export default function HeroSection() {
       className="relative overflow-hidden !py-12 md:!py-16 lg:!py-20"
     >
       <AmbientOrbs variant="hero" />
-      <SectionContainer className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12">
+      <SectionContainer className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-6">
         <Reveal>
           <div className="flex flex-col gap-6">
             <p className="section-label text-[var(--color-text-muted)]">
@@ -68,12 +68,12 @@ export default function HeroSection() {
                 className="w-full rounded-full sm:w-auto"
                 onClick={() => scrollToHash("#lo-trinh")}
               >
-                Xem nội dung workshop
+                Xem nội dung chương trình
               </Button>
             </div>
 
             <p className="text-sm font-semibold text-[var(--color-accent-red)]">
-              Chỉ còn vài chục suất — ưu tiên người đăng ký sớm
+              Chỉ còn vài suất — ưu tiên người đăng ký sớm
             </p>
           </div>
         </Reveal>

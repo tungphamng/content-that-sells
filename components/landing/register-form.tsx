@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LeadSuccessModal } from "@/components/ui/lead-success-modal";
-import { SBO_EVENT_REGISTER_API_URL } from "@/lib/constants";
+import {
+  EVENT_ZALO_GROUP_URL,
+  SBO_EVENT_REGISTER_API_URL,
+} from "@/lib/constants";
 import { submitSboEventRegistration } from "@/lib/sbo-event-register";
 import { cn } from "@/lib/utils/cn";
 
@@ -18,6 +21,7 @@ export function RegisterForm({
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [zaloJoinUrl, setZaloJoinUrl] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const p = idPrefix ? `${idPrefix}-` : "";
@@ -28,7 +32,7 @@ export function RegisterForm({
     const trimmedEmail = email.trim();
     const trimmedPhone = phone.trim();
     if (!trimmedName || !trimmedEmail || !trimmedPhone) {
-      setError("Vui lòng điền họ tên, email và số điện thoại.");
+      setError("Vui lòng điền họ tên, email và số Zalo.");
       return;
     }
 
@@ -47,10 +51,8 @@ export function RegisterForm({
       if (!ok || !data.success) {
         throw new Error(data.error || "Không gửi được đăng ký.");
       }
-      if (data.redirectTo) {
-        window.location.href = data.redirectTo;
-        return;
-      }
+      const joinUrl = data.redirectTo?.trim() || EVENT_ZALO_GROUP_URL.trim();
+      setZaloJoinUrl(joinUrl || null);
       setShowSuccess(true);
       setName("");
       setEmail("");
@@ -116,7 +118,7 @@ export function RegisterForm({
               htmlFor={`${p}phone`}
               className="mb-2 block text-sm font-medium text-[var(--foreground)]"
             >
-              Số điện thoại *
+              Số Zalo *
             </label>
             <input
               id={`${p}phone`}
@@ -148,13 +150,16 @@ export function RegisterForm({
         >
           {submitting ? "Đang gửi…" : "Xác nhận đăng ký miễn phí"}
         </Button>
-        <p className="mt-4 text-center text-xs text-[#9CA3AF]">
-          Bạn có thể huỷ nhận tin bất cứ lúc nào. Không spam.
+        <p className="mt-4 text-center text-xs leading-relaxed text-[#9CA3AF]">
+          Bằng việc gửi form này, bạn đồng ý nhận thông tin từ chúng tôi về
+          chương trình đăng ký và các thông tin cập nhật khác. Bạn có thể hủy
+          đăng ký bất cứ lúc nào.
         </p>
       </form>
       <LeadSuccessModal
         open={showSuccess}
         onClose={() => setShowSuccess(false)}
+        zaloJoinUrl={zaloJoinUrl}
       />
     </>
   );
