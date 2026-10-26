@@ -24,15 +24,15 @@
   --space-4: 2rem;
   --space-6: 3rem;
   --space-8: 4rem;
-  --font-heading: var(--font-svn-uncut-sans), sans-serif;
-  --font-sans: var(--font-svn-uncut-sans), sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-svn-uncut-sans), sans-serif;
-  --font-heading: var(--font-svn-uncut-sans), sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, sans-serif;
 }
 
 @layer base {

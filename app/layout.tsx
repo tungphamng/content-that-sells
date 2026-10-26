@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { svnUncutSans } from "./fonts";
+import { inter } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,9 +18,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="vi"
-      className={`${svnUncutSans.variable} ${svnUncutSans.className} h-full antialiased`}
+      className={`${inter.variable} ${inter.className} h-full antialiased font-sans`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans">
         {children}
       </body>
     </html>
