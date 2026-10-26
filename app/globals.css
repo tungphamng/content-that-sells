@@ -24,15 +24,15 @@
   --space-4: 2rem;
   --space-6: 3rem;
   --space-8: 4rem;
-  --font-heading: var(--font-svn-uncut-sans), "SVN-Uncut Sans", system-ui, sans-serif;
-  --font-sans: var(--font-svn-uncut-sans), "SVN-Uncut Sans", system-ui, sans-serif;
+  --font-heading: var(--font-svn-uncut-sans), sans-serif;
+  --font-sans: var(--font-svn-uncut-sans), sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-svn-uncut-sans), "SVN-Uncut Sans", system-ui, sans-serif;
-  --font-heading: var(--font-svn-uncut-sans), "SVN-Uncut Sans", system-ui, sans-serif;
+  --font-sans: var(--font-svn-uncut-sans), sans-serif;
+  --font-heading: var(--font-svn-uncut-sans), sans-serif;
 }
 
 @layer base {
@@ -50,7 +50,7 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-heading), system-ui, sans-serif;
+    font-family: var(--font-heading);
     font-weight: 700;
     color: var(--foreground);
   }
@@ -58,7 +58,7 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans), system-ui, sans-serif;
+    font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.625;
   }
@@ -70,12 +70,12 @@
 }
 
 .font-nav {
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 500;
 }
 
 .font-manrope {
-  font-family: var(--font-heading), system-ui, sans-serif;
+  font-family: var(--font-heading);
 }
 
 .section-intro {

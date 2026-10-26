@@ -26,5 +26,4 @@ export const svnUncutSans = localFont({
   ],
   variable: "--font-svn-uncut-sans",
   display: "swap",
-  declarations: [{ prop: "font-family", value: "SVN-Uncut Sans" }],
 });

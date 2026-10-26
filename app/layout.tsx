@@ -18,9 +18,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="vi"
-      className={`${svnUncutSans.variable} h-full antialiased font-sans`}
+      className={`${svnUncutSans.variable} ${svnUncutSans.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans">
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         {children}
       </body>
     </html>
