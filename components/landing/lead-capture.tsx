@@ -30,9 +30,7 @@ export default function LeadCaptureSection() {
             <ul className="mt-6 flex flex-col gap-2 text-sm text-[var(--color-text-muted)]">
               <li>✓ Sự kiện: 9h00 – 11h00, Thứ 7, 31/10</li>
               <li>✓ Online qua Zoom — miễn phí 100%</li>
-              <li>
-                ✓ Quà tặng hấp dẫn: template chuỗi content + checklist
-              </li>
+              <li>✓ Quà tặng hấp dẫn</li>
             </ul>
           </Reveal>
 
