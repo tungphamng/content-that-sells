@@ -11,19 +11,16 @@ const benefits = [
     title: "Content có mục tiêu rõ",
     body:
       "Biết mỗi bài phục vụ bước nào trong hành trình: nhận diện → tin tưởng → đăng ký sự kiện — không đăng vì phải đăng.",
-    icon: "🎯",
   },
   {
     title: "Hook & CTA chuẩn chuyển đổi",
     body:
       "Công thức mở bài, storytelling ngắn và lời kêu gọi hành động khiến người đọc muốn bấm link đăng ký ngay.",
-    icon: "🔥",
   },
   {
     title: "Lịch đăng 7–14 ngày",
     body:
       "Template lịch content trước sự kiện: tần suất, format (video/carousel/live) và cách tái sử dụng 1 ý thành nhiều bài.",
-    icon: "📅",
   },
 ];
 
@@ -51,8 +48,7 @@ export default function BenefitsSection() {
               <ShineCard
                 className="card-surface h-full transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.35)]"
               >
-                <span className="text-2xl" aria-hidden>{b.icon}</span>
-                <h3 className="mt-4 text-xl font-bold">{b.title}</h3>
+                <h3 className="text-xl font-bold">{b.title}</h3>
                 <p className="mt-3 text-body text-justify-vi">{b.body}</p>
               </ShineCard>
             </StaggerItem>
