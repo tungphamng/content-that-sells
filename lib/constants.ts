@@ -7,7 +7,8 @@ export const FACEBOOK_PAGE_URL =
 
 /** Link group Zalo sự kiện — hiển thị trong popup sau đăng ký */
 export const EVENT_ZALO_GROUP_URL =
-  process.env.NEXT_PUBLIC_EVENT_ZALO_GROUP_URL ?? "";
+  process.env.NEXT_PUBLIC_EVENT_ZALO_GROUP_URL ??
+  "https://zalo.me/g/428kgtnq6qhvesxztssm";
 
 /** SBO event registration (Content that sells) — same endpoint as Kit HTML form */
 export const SBO_EVENT_REGISTER_API_URL =
