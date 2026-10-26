@@ -59,7 +59,7 @@ export function LeadSuccessModal({
             href={trimmedJoinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[var(--color-accent-red)] px-6 py-3 text-base font-semibold text-white shadow-[0_8px_24px_rgba(229,57,53,0.35)] transition-all duration-300 hover:bg-[var(--color-accent-red-hover)] hover:scale-[1.02]"
+            className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-black shadow-[0_8px_28px_rgba(255,255,255,0.2)] transition-all duration-300 hover:bg-[#f0f0f0] hover:scale-[1.02]"
           >
             Tham gia group Zalo
           </a>

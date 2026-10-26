@@ -16,7 +16,7 @@ export default function LeadCaptureSection() {
       <SectionContainer width="wide" className="relative">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <Reveal>
-            <p className="section-label text-[var(--color-text-subtle)]">
+            <p className="section-label">
               Giữ chỗ ngay
             </p>
             <h2 className="section-title mt-2 text-left">

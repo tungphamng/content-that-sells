@@ -14,7 +14,7 @@ export function ShineCard({
     <div
       className={cn(
         "shine-card-sweep rounded-2xl transition-all duration-500",
-        glow && "shadow-[0_0_40px_rgba(212,175,55,0.2)]",
+        glow && "shadow-[0_0_40px_rgba(255,255,255,0.08)]",
         className,
       )}
     >
