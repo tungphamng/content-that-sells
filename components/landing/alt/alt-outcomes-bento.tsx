@@ -9,7 +9,7 @@ const cells = [
     title: "Hệ thống content bán được",
     body:
       "Workshop 2 giờ thực chiến: từ ý tưởng rời rạc → chuỗi bài có mục tiêu rõ trước ngày mở bán.",
-    accent: "PRODUCT · CONTENT · FUNNEL",
+    accent: "CONTENT-FUNNEL",
   },
   {
     title: "Content có mục tiêu",

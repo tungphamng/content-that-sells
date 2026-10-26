@@ -48,7 +48,7 @@ export default function AgendaSection() {
               <>
                 2 giờ — đi thẳng vào{" "}
                 <span className="text-[var(--foreground)]">
-                  PRODUCT · CONTENT · FUNNEL
+                  CONTENT-FUNNEL
                 </span>
               </>
             }

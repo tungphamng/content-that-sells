@@ -10,7 +10,7 @@ import { WORKSHOP_POSTER_SRC } from "@/lib/constants";
 import { scrollToHash } from "@/lib/scroll-to-section";
 
 const trustItems = [
-  "100% miễn phí — không bán khóa trong workshop",
+  "100% miễn phí tham gia workshop",
   "Framework content đã dùng cho launch thật",
   "Tặng template chuỗi bài + checklist triển khai",
 ];

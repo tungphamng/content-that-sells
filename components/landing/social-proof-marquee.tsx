@@ -1,6 +1,6 @@
 export default function SocialProofMarqueeSection() {
   const items = [
-    "PRODUCT · CONTENT · FUNNEL",
+    "CONTENT-FUNNEL",
     "10X MASTERMINDS",
     "MAKE IT LAUNCH",
     "CHUỖI CONTENT CHUYỂN ĐỔI CAO",
