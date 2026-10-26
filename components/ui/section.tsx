@@ -76,7 +76,7 @@ export function SectionIntro({
         <p
           className={cn(
             "section-label",
-            labelTone === "gold" && "text-[var(--color-accent-gold)]",
+            labelTone === "gold" && "text-[var(--foreground)]",
           )}
         >
           {label}

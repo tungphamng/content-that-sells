@@ -59,7 +59,7 @@ export default function HeaderSection() {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(13,13,13,0.92)] backdrop-blur-md"
+      className="sticky top-0 z-50 border-b border-white/15 bg-[rgba(0,0,0,0.88)] backdrop-blur-md"
     >
       <SectionContainer className="py-3 md:py-4">
         <div className="flex items-center justify-between gap-2 sm:gap-4">

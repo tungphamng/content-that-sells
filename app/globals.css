@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d0d0d;
-  --foreground: #f2f2f2;
-  --color-text-muted: #c2c2c2;
-  --color-text-subtle: #a3a3a3;
-  --color-surface: #121212;
-  --color-surface-elevated: #1a1a1a;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --background: #000000;
+  --foreground: #ffffff;
+  --color-text-muted: #b3b3b3;
+  --color-text-subtle: #8a8a8a;
+  --color-surface: #0a0a0a;
+  --color-surface-elevated: #141414;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.28);
   --color-accent-red: #e53935;
   --color-accent-red-hover: #d32f2f;
   --color-accent-gold: #d4af37;
@@ -24,15 +24,15 @@
   --space-4: 2rem;
   --space-6: 3rem;
   --space-8: 4rem;
-  --font-heading: var(--font-google-sans);
-  --font-sans: var(--font-google-sans);
+  --font-heading: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-google-sans);
-  --font-heading: var(--font-google-sans);
+  --font-sans: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, sans-serif;
 }
 
 @layer base {
@@ -50,7 +50,7 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-heading), system-ui, sans-serif;
+    font-family: var(--font-heading);
     font-weight: 700;
     color: var(--foreground);
   }
@@ -58,7 +58,7 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans), system-ui, sans-serif;
+    font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.625;
   }
@@ -70,12 +70,12 @@
 }
 
 .font-nav {
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 500;
 }
 
 .font-manrope {
-  font-family: var(--font-heading), system-ui, sans-serif;
+  font-family: var(--font-heading);
 }
 
 .section-intro {
@@ -96,10 +96,10 @@
 
 .section-label {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-accent-red);
+  letter-spacing: 0.18em;
+  color: var(--foreground);
 }
 
 .section-title {
@@ -145,7 +145,8 @@
 }
 
 .card-surface:hover {
-  border-color: rgba(229, 57, 53, 0.4);
+  border-color: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .agenda-card {
@@ -156,10 +157,10 @@
 }
 
 .agenda-card:hover {
-  border-color: rgba(229, 57, 53, 0.55);
+  border-color: rgba(255, 255, 255, 0.42);
   box-shadow:
-    0 0 36px rgba(229, 57, 53, 0.14),
-    0 16px 40px rgba(0, 0, 0, 0.28);
+    0 0 32px rgba(255, 255, 255, 0.06),
+    0 16px 40px rgba(0, 0, 0, 0.35);
   transform: translateY(-2px);
 }
 
@@ -182,11 +183,11 @@
 .bg-mesh-animated {
   background: linear-gradient(
     135deg,
-    #0d0d0d 0%,
-    #151010 25%,
-    #1a1214 50%,
-    #0d0d0d 75%,
-    #121010 100%
+    #000000 0%,
+    #0c0c0c 25%,
+    #121212 50%,
+    #050505 75%,
+    #000000 100%
   );
   background-size: 200% 200%;
   animation: gradient-shift 14s ease infinite;
@@ -219,26 +220,12 @@
 }
 
 .text-gold-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--color-accent-gold) 0%,
-    var(--color-accent-gold-bright) 45%,
-    var(--color-accent-gold) 90%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gold-text-shimmer 4s ease infinite;
+  color: var(--foreground);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .text-gold-shimmer {
-    animation: none;
-    color: var(--color-accent-gold);
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
+    color: var(--foreground);
   }
 }
 
@@ -252,13 +239,13 @@
 }
 
 .btn-shimmer {
+  background-color: #ffffff;
   background-image: linear-gradient(
     105deg,
-    #c9a227 0%,
-    #e7c376 35%,
-    #f5dfa0 50%,
-    #e7c376 65%,
-    #c9a227 100%
+    #e8e8e8 0%,
+    #ffffff 40%,
+    #f5f5f5 55%,
+    #ffffff 100%
   );
   background-size: 200% auto;
 }
@@ -276,10 +263,10 @@
 @keyframes glow-pulse-red {
   0%,
   100% {
-    box-shadow: 0 8px 24px rgba(229, 57, 53, 0.35);
+    box-shadow: 0 8px 28px rgba(255, 255, 255, 0.18);
   }
   50% {
-    box-shadow: 0 12px 32px rgba(229, 57, 53, 0.5);
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.32);
   }
 }
 
@@ -336,7 +323,7 @@
     ),
     radial-gradient(
       1px 1px at 70% 60%,
-      rgba(212, 175, 55, 0.25) 0%,
+      rgba(255, 255, 255, 0.18) 0%,
       transparent 100%
     );
 }
@@ -346,8 +333,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(229, 57, 53, 0.4),
-    rgba(212, 175, 55, 0.35),
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.08),
     transparent
   );
 }
@@ -393,9 +381,9 @@
   border-radius: 50%;
   border: 10px solid var(--background);
   box-shadow:
-    0 0 0 3px rgba(229, 57, 53, 0.4),
-    0 16px 40px rgba(0, 0, 0, 0.45),
-    inset 0 0 24px rgba(0, 0, 0, 0.25);
+    0 0 0 3px rgba(255, 255, 255, 0.35),
+    0 20px 48px rgba(0, 0, 0, 0.65),
+    inset 0 0 24px rgba(0, 0, 0, 0.35);
 }
 
 .hero-visual-anchor {
@@ -426,8 +414,8 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(229, 57, 53, 0.22) 0%,
-    rgba(212, 175, 55, 0.1) 42%,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.05) 42%,
     transparent 68%
   );
   filter: blur(10px);
@@ -443,10 +431,12 @@
 }
 
 .hero-event-badge {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(18, 18, 18, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(12px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
   width: 100%;
 }
 
@@ -506,7 +496,7 @@
     background: linear-gradient(
       180deg,
       transparent,
-      rgba(229, 57, 53, 0.55),
+      rgba(255, 255, 255, 0.35),
       transparent
     );
   }
@@ -557,8 +547,8 @@
 .kit-form-wrapper input:focus-visible,
 .kit-form-wrapper textarea:focus-visible {
   outline: none;
-  border-color: var(--color-accent-red);
-  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.28);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
 }
 
 .kit-form-wrapper input:focus-visible::placeholder,

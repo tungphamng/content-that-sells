@@ -146,7 +146,7 @@ export function RegisterForm({
           variant="red"
           size="lg"
           disabled={submitting}
-          className="mt-6 w-full rounded-full glow-pulse-red transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(229,57,53,0.4)] disabled:opacity-65"
+          className="mt-6 w-full rounded-full glow-pulse-red transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(255,255,255,0.25)] disabled:opacity-65"
         >
           {submitting ? "Đang gửi…" : "Xác nhận đăng ký miễn phí"}
         </Button>

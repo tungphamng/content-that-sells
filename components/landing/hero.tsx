@@ -10,7 +10,7 @@ import { WORKSHOP_POSTER_SRC } from "@/lib/constants";
 import { scrollToHash } from "@/lib/scroll-to-section";
 
 const trustItems = [
-  "100% miễn phí — không bán khóa trong workshop",
+  "100% miễn phí tham gia workshop",
   "Framework content đã dùng cho launch thật",
   "Tặng template chuỗi bài + checklist triển khai",
 ];
@@ -50,7 +50,7 @@ export default function HeroSection() {
                   className="flex gap-3 text-sm text-[var(--color-text-muted)] md:text-base"
                 >
                   <span
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-red)]/20 text-xs font-bold text-[var(--color-accent-red)]"
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-xs font-bold text-[var(--foreground)]"
                     aria-hidden
                   >
                     ✓
@@ -72,7 +72,7 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            <p className="text-sm font-semibold text-[var(--color-accent-red)]">
+            <p className="text-sm font-semibold text-[var(--foreground)]">
               Chỉ còn vài suất — ưu tiên người đăng ký sớm
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function HeroSection() {
                 src={WORKSHOP_POSTER_SRC}
                 alt="Workshop Content That Sells — visual hộp pizza MAKE IT LAUNCH"
                 fill
-                className="object-cover object-[center_22%] scale-[1.15]"
+                className="object-cover object-center scale-100"
                 sizes="(max-width: 1024px) 88vw, 384px"
                 priority
               />
@@ -108,7 +108,7 @@ function HeroEventInfoBar() {
     <div className="hero-event-info text-sm">
       <div className="hero-event-info__time flex items-start gap-2.5">
         <span
-          className="mt-0.5 shrink-0 text-base text-[var(--color-accent-gold-bright)]"
+          className="mt-0.5 shrink-0 text-base text-[var(--foreground)]"
           aria-hidden
         >
           ↘
@@ -129,7 +129,7 @@ function HeroEventInfoBar() {
 
       <div className="hero-event-info__location flex items-start gap-2.5">
         <span
-          className="mt-0.5 shrink-0 text-base text-[var(--color-accent-gold-bright)]"
+          className="mt-0.5 shrink-0 text-base text-[var(--foreground)]"
           aria-hidden
         >
           ◎

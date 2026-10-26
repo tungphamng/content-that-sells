@@ -9,7 +9,7 @@ const cells = [
     title: "Hệ thống content bán được",
     body:
       "Workshop 2 giờ thực chiến: từ ý tưởng rời rạc → chuỗi bài có mục tiêu rõ trước ngày mở bán.",
-    accent: "PRODUCT · CONTENT · FUNNEL",
+    accent: "CONTENT-FUNNEL",
   },
   {
     title: "Content có mục tiêu",
@@ -32,7 +32,7 @@ export default function AltOutcomesBento() {
         <Reveal>
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             Bạn sẽ{" "}
-            <span className="text-[var(--color-accent-red)]">mang về</span>
+            <span className="text-[var(--foreground)]">mang về</span>
           </h2>
           <p className="mt-3 max-w-2xl text-[#C2C2C2]">
             Bento layout — nhấn mạnh outcome chính, chi tiết phụ xếp quanh.
@@ -49,7 +49,7 @@ export default function AltOutcomesBento() {
               }
             >
               {cell.accent && (
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-accent-gold)]">
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--foreground)]">
                   {cell.accent}
                 </p>
               )}
@@ -65,7 +65,7 @@ export default function AltOutcomesBento() {
                     "Template + checklist tặng kèm",
                   ].map((t) => (
                     <li key={t} className="flex gap-2">
-                      <CheckCircleIcon className="text-[var(--color-accent-gold)]" />
+                      <CheckCircleIcon className="text-[var(--foreground)]" />
                       {t}
                     </li>
                   ))}

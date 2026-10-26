@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { inter } from "./fonts";
 import "./globals.css";
-
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-google-sans",
-  subsets: ["latin", "vietnamese"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Content That Sells | Workshop miễn phí — 10X Masterminds",
@@ -17,7 +10,7 @@ export const metadata: Metadata = {
     title: "Content That Sells — Free Workshop Online",
     description:
       "Chuỗi content chuyển đổi cao cho webinar, workshop & sự kiện bán hàng.",
-    images: [{ url: "/workshop-poster.png" }],
+    images: [{ url: "/hero-peephole.jpg" }],
   },
 };
 
@@ -25,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="vi"
-      className={`${plusJakarta.variable} h-full antialiased font-sans`}
+      className={`${inter.variable} ${inter.className} h-full antialiased font-sans`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans">
         {children}

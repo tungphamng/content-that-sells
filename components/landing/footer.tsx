@@ -23,7 +23,7 @@ export default function FooterSection() {
           href={FACEBOOK_PAGE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-10 items-center rounded-full border border-[var(--color-border-strong)] px-4 py-2 text-sm transition-colors hover:border-[var(--color-accent-gold)] hover:text-white"
+          className="inline-flex min-h-10 items-center rounded-full border border-[var(--color-border-strong)] px-4 py-2 text-sm transition-colors hover:border-white hover:text-white"
         >
           Facebook
         </a>

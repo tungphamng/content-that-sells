@@ -47,8 +47,8 @@ export default function AgendaSection() {
             title={
               <>
                 2 giờ — đi thẳng vào{" "}
-                <span className="text-[var(--color-accent-red)]">
-                  PRODUCT · CONTENT · FUNNEL
+                <span className="text-[var(--foreground)]">
+                  CONTENT-FUNNEL
                 </span>
               </>
             }
@@ -61,7 +61,7 @@ export default function AgendaSection() {
             <StaggerItem key={mod.title}>
               <article className="card-surface agenda-card flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
                 <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-accent-red)] text-lg font-bold text-white shadow-[0_8px_24px_rgba(229,57,53,0.3)]"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white text-lg font-bold text-black shadow-[0_8px_24px_rgba(255,255,255,0.12)]"
                   aria-hidden
                 >
                   {index + 1}
@@ -75,7 +75,7 @@ export default function AgendaSection() {
                     {mod.points.map((p) => (
                       <li key={p} className="flex gap-3">
                         <CheckCircleIcon
-                          className="mt-0.5 text-[var(--color-accent-gold)]"
+                          className="mt-0.5 text-[var(--foreground)]"
                         />
                         <span>{p}</span>
                       </li>
