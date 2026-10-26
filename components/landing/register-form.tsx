@@ -27,7 +27,10 @@ export function RegisterForm({
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
     const trimmedPhone = phone.trim();
-    if (!trimmedName || !trimmedEmail || !trimmedPhone) return;
+    if (!trimmedName || !trimmedEmail || !trimmedPhone) {
+      setError("Vui lòng điền họ tên, email và số điện thoại.");
+      return;
+    }
 
     setError(null);
     setSubmitting(true);
@@ -69,7 +72,6 @@ export function RegisterForm({
           "kit-form-wrapper kit-form-wrapper--dark rounded-2xl border border-[var(--color-border)] bg-[rgba(18,18,18,0.85)] p-6 backdrop-blur-md md:p-8",
           className,
         )}
-        noValidate
       >
         <div className="flex flex-col gap-4">
           <div>
