@@ -47,7 +47,7 @@ export default function AgendaSection() {
             title={
               <>
                 2 giờ — đi thẳng vào{" "}
-                <span className="text-[var(--color-accent-red)]">
+                <span className="text-[var(--foreground)]">
                   PRODUCT · CONTENT · FUNNEL
                 </span>
               </>
@@ -75,7 +75,7 @@ export default function AgendaSection() {
                     {mod.points.map((p) => (
                       <li key={p} className="flex gap-3">
                         <CheckCircleIcon
-                          className="mt-0.5 text-[var(--color-accent-gold)]"
+                          className="mt-0.5 text-[var(--foreground)]"
                         />
                         <span>{p}</span>
                       </li>

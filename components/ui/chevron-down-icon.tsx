@@ -10,7 +10,7 @@ export function ChevronDownIcon({
   return (
     <svg
       className={cn(
-        "h-5 w-5 shrink-0 text-[var(--color-accent-gold)] transition-transform duration-300 ease-out motion-reduce:transition-none",
+        "h-5 w-5 shrink-0 text-[var(--foreground)] transition-transform duration-300 ease-out motion-reduce:transition-none",
         expanded && "rotate-180",
         className,
       )}

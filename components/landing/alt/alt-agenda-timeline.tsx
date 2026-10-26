@@ -46,7 +46,7 @@ export default function AltAgendaTimeline() {
                 <ul className="mt-4 space-y-2 text-left text-sm text-[#C2C2C2]">
                   {step.points.map((p) => (
                     <li key={p} className="flex gap-2">
-                      <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent-gold)]" />
+                      <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-[var(--foreground)]" />
                       {p}
                     </li>
                   ))}
@@ -62,7 +62,7 @@ export default function AltAgendaTimeline() {
               key={step.title}
               className="rounded-2xl border border-white/10 bg-[#1a1a1a] p-5"
             >
-              <span className="text-sm font-bold text-[var(--color-accent-red)]">
+              <span className="text-sm font-bold text-[var(--foreground)]">
                 Phần {i + 1} · {step.time}
               </span>
               <h3 className="mt-1 text-lg font-bold">{step.title}</h3>

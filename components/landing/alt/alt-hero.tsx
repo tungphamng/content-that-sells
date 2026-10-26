@@ -17,7 +17,7 @@ export default function AltHero() {
     <section className="relative overflow-hidden bg-[#0a0a0a]">
       <div className="lg:grid lg:grid-cols-2 lg:min-h-[min(92vh,880px)]">
         <div className="relative z-10 flex flex-col justify-center px-4 py-14 md:px-8 lg:py-20 lg:pl-[max(1rem,calc((100vw-1280px)/2+2rem))]">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent-red)]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--foreground)]">
             Free Workshop Online
           </p>
           <MakeItLaunchTitle size="hero" className="mt-4 block" />
@@ -45,7 +45,7 @@ export default function AltHero() {
             <RegisterCtaButton size="lg" className="w-full sm:w-auto" />
             <button
               type="button"
-              className="text-sm font-semibold text-[var(--color-accent-gold)] underline-offset-4 hover:underline"
+              className="text-sm font-semibold text-[var(--foreground)] underline-offset-4 hover:underline"
               onClick={() => scrollToHash("#agenda")}
             >
               Xem 2 giờ học gì →

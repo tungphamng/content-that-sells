@@ -8,10 +8,10 @@ export default function AltPreviewBanner() {
     >
       <div className="container mx-auto flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <p className="text-sm text-[#E0E0E0]">
-          <strong className="text-[var(--color-accent-gold)]">Layout B</strong>{" "}
+          <strong className="text-[var(--foreground)]">Layout B</strong>{" "}
           — hero full-bleed · bento outcomes · timeline agenda · FAQ + form
           sticky. So với{" "}
-          <Link href="/" className="underline text-white hover:text-[var(--color-accent-gold)]">
+          <Link href="/" className="underline text-white hover:text-[var(--foreground)]">
             trang chính (/)
           </Link>
           .

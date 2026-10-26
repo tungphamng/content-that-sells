@@ -18,7 +18,7 @@ export function MakeItLaunchTitle({
   return (
     <span
       className={cn(
-        "uppercase text-gold-shimmer font-manrope",
+        "uppercase text-gold-shimmer font-sans",
         sizeMap[size],
         className,
       )}

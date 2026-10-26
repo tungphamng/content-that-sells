@@ -16,7 +16,7 @@ export default function PremiumPreviewBanner() {
     >
       <div className="container mx-auto flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--color-accent-gold)]">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--foreground)]">
             Review · Premium layer
           </p>
           <p className="mt-1 text-sm text-[#E0E0E0]">
@@ -25,7 +25,7 @@ export default function PremiumPreviewBanner() {
             polish thị giác. So sánh với{" "}
             <Link
               href="/"
-              className="font-semibold text-[var(--color-accent-gold)] underline-offset-2 hover:underline"
+              className="font-semibold text-[var(--foreground)] underline-offset-2 hover:underline"
             >
               trang chính (/)
             </Link>

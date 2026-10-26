@@ -79,7 +79,7 @@ export default function AltFaqRegister() {
 
           <div className="lg:col-span-2">
             <div className="alt-sticky-form">
-              <p className="text-xs font-bold uppercase tracking-wider text-[var(--color-accent-red)]">
+              <p className="text-xs font-bold uppercase tracking-wider text-[var(--foreground)]">
                 Giữ chỗ
               </p>
               <h3 className="mt-2 text-2xl font-bold">

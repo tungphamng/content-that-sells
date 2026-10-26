@@ -16,7 +16,7 @@ export default function ProblemSection() {
             <p className="section-label">Có quen không?</p>
             <h2 className="section-title mt-2 text-left">
               Content nhiều —{" "}
-              <span className="text-[var(--color-accent-red)]">
+              <span className="text-[var(--foreground)]">
                 chuyển đổi ít
               </span>
             </h2>
@@ -34,7 +34,7 @@ export default function ProblemSection() {
                   className="card-surface border border-[rgba(255,255,255,0.08)] text-[17px] leading-relaxed text-[#E0E0E0] md:text-[18px]"
                 >
                   <span
-                    className="mr-2 font-bold text-[var(--color-accent-red)]"
+                    className="mr-2 font-bold text-[var(--foreground)]"
                     aria-hidden
                   >
                     ×
