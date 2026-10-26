@@ -14,7 +14,7 @@ export default function ProblemSection() {
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16">
           <Reveal>
             <p className="section-label">Có quen không?</p>
-            <h2 className="section-title mt-2 text-left">
+            <h2 className="section-title section-title--split-col mt-2 text-left md:whitespace-nowrap">
               Content nhiều —{" "}
               <span className="text-[var(--foreground)]">
                 chuyển đổi ít

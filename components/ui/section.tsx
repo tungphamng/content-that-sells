@@ -61,12 +61,16 @@ export function SectionIntro({
   label,
   title,
   description,
+  descriptionAlign = "justify",
+  descriptionClassName,
   labelTone = "red",
   className,
 }: {
   label?: string;
   title: ReactNode;
   description?: ReactNode;
+  descriptionAlign?: "justify" | "center";
+  descriptionClassName?: string;
   labelTone?: "red" | "gold";
   className?: string;
 }) {
@@ -84,7 +88,16 @@ export function SectionIntro({
       )}
       <h2 className="section-title">{title}</h2>
       {description && (
-        <p className="section-description text-justify-vi">{description}</p>
+        <p
+          className={cn(
+            "section-description",
+            descriptionAlign === "center" && "text-center",
+            descriptionAlign === "justify" && "text-justify-vi",
+            descriptionClassName,
+          )}
+        >
+          {description}
+        </p>
       )}
     </div>
   );

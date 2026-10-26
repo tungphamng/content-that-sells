@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { RegisterCtaButton } from "@/components/ui/button";
-import { MakeItLaunchTitle } from "@/components/ui/make-it-launch-title";
 import { WORKSHOP_POSTER_SRC } from "@/lib/constants";
 import { scrollToHash } from "@/lib/scroll-to-section";
 
@@ -17,16 +16,17 @@ export default function AltHero() {
     <section className="relative overflow-hidden bg-[#0a0a0a]">
       <div className="lg:grid lg:grid-cols-2 lg:min-h-[min(92vh,880px)]">
         <div className="relative z-10 flex flex-col justify-center px-4 py-14 md:px-8 lg:py-20 lg:pl-[max(1rem,calc((100vw-1280px)/2+2rem))]">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--foreground)]">
-            Free Workshop Online
-          </p>
-          <MakeItLaunchTitle size="hero" className="mt-4 block" />
-          <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-            Content
-            <br />
-            That{" "}
-            <span className="text-gold-shimmer">Sells</span>
-          </h1>
+          <div className="flex flex-col gap-1 md:gap-1.5">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--foreground)]">
+              Free Workshop Online
+            </p>
+            <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+              Content
+              <br />
+              That{" "}
+              <span className="text-gold-shimmer">Sells</span>
+            </h1>
+          </div>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-[#C2C2C2]">
             Chuỗi content chuyển đổi cao — kéo đúng khách đến webinar &
             workshop của bạn, không đăng bài ngẫu hứng.

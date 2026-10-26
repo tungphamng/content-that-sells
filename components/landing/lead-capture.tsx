@@ -19,7 +19,7 @@ export default function LeadCaptureSection() {
             <p className="section-label">
               Giữ chỗ ngay
             </p>
-            <h2 className="section-title mt-2 text-left">
+            <h2 className="section-title section-title--split-col mt-2 text-left md:whitespace-nowrap">
               Đăng ký{" "}
               <span className="text-gold-shimmer">Content That Sells</span>
             </h2>

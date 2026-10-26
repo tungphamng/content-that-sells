@@ -34,11 +34,13 @@ export default function BenefitsSection() {
             title={
               <>
                 Không chỉ ý tưởng — mà là{" "}
-                <span className="text-gold-shimmer">hệ thống content</span> bán
-                được
+                <span className="text-gold-shimmer">hệ thống content</span>{" "}
+                bán được
               </>
             }
             description="Workshop 2 giờ, tập trung thực chiến cho coach, creator và chủ business đang chuẩn bị webinar, workshop hoặc đợt mở bán."
+            descriptionAlign="center"
+            descriptionClassName="mx-auto max-w-[36rem] leading-snug"
           />
         </Reveal>
 

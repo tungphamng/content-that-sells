@@ -48,11 +48,12 @@ export default function AgendaSection() {
               <>
                 2 giờ — đi thẳng vào{" "}
                 <span className="text-[var(--foreground)]">
-                  CONTENT-FUNNEL
+                  CONTENT&#8209;FUNNEL
                 </span>
               </>
             }
             description="Nối sản phẩm, nội dung và quy trình chuyển đổi thành một mạch thống nhất — giống thông điệp trên poster workshop."
+            descriptionAlign="center"
           />
         </Reveal>
 
