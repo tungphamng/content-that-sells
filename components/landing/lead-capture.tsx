@@ -24,15 +24,15 @@ export default function LeadCaptureSection() {
               <span className="text-gold-shimmer">Content That Sells</span>
             </h2>
             <p className="mt-4 text-body text-justify-vi text-[var(--color-text-muted)]">
-              Điền form bên cạnh — team gửi link Zoom và hướng dẫn vào group
-              Zalo trong 24h. Dùng email bạn check thường xuyên để không bỏ
-              lỡ nhắc lịch trước ngày{" "}
-              <strong className="text-[var(--foreground)]">31/10</strong>.
+              Vui lòng điền form đăng ký tham gia bên cạnh để nhận quà tặng và
+              thông tin tham gia chương trình.
             </p>
             <ul className="mt-6 flex flex-col gap-2 text-sm text-[var(--color-text-muted)]">
               <li>✓ Sự kiện: 9h00 – 11h00, Thứ 7, 31/10</li>
               <li>✓ Online qua Zoom — miễn phí 100%</li>
-              <li>✓ Tặng template chuỗi content + checklist</li>
+              <li>
+                ✓ Quà tặng hấp dẫn: template chuỗi content + checklist
+              </li>
             </ul>
           </Reveal>
 

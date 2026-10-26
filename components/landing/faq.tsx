@@ -24,12 +24,12 @@ const faqs = [
   {
     q: "Workshop diễn ra trên nền tảng nào?",
     a:
-      "Trực tiếp trên Zoom. Sau khi đăng ký, bạn sẽ được mời vào group Zalo của 10X Masterminds để nhận link và nhắc lịch.",
+      "Trực tiếp trên Zoom. Sau khi đăng ký, bạn sẽ được mời vào group Zalo của sự kiện để nhận link và nhắc lịch.",
   },
   {
     q: "Có recording sau sự kiện không?",
     a:
-      "Recording chỉ gửi trong group Zalo trong thời gian giới hạn cho người đã đăng ký — hãy tham gia live để hỏi đáp trực tiếp.",
+      "Chúng tôi khuyên bạn tham gia live để hỏi đáp trực tiếp. Bản ghi buổi workshop (nếu có) không tự động gửi miễn phí cho tất cả — ai muốn nhận recording có thể đăng ký mua sau buổi học.",
   },
 ];
 
@@ -87,10 +87,7 @@ export default function FaqSection() {
     <Section id="faq" variant="elevated">
       <SectionContainer width="narrow">
         <Reveal>
-          <SectionIntro
-            title="Câu hỏi thường gặp"
-            description="Còn thắc mắc? Đăng ký trước — hỏi trực tiếp trong buổi live."
-          />
+          <SectionIntro title="Câu hỏi thường gặp" />
         </Reveal>
 
         <Stagger className="flex flex-col gap-3">
