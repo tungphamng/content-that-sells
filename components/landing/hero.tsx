@@ -14,7 +14,11 @@ const trustItems = [
   "Tặng template chuỗi bài + checklist triển khai",
 ];
 
-export default function HeroSection() {
+export default function HeroSection({
+  programHash = "#lo-trinh",
+}: {
+  programHash?: string;
+}) {
   return (
     <Section
       variant="mesh"
@@ -66,7 +70,7 @@ export default function HeroSection() {
                 variant="outline-light"
                 size="lg"
                 className="w-full rounded-full sm:w-auto"
-                onClick={() => scrollToHash("#lo-trinh")}
+                onClick={() => scrollToHash(programHash)}
               >
                 Xem nội dung chương trình
               </Button>
@@ -91,7 +95,7 @@ export default function HeroSection() {
                     alt="Mrs. Thao Tran — cố vấn hệ thống nội dung chuyển đổi"
                     fill
                     className="object-cover object-[50%_4%]"
-                    sizes="(max-width: 1024px) 84vw, 352px"
+                    sizes="(max-width: 1023px) 94vw, 368px"
                     priority
                   />
                   <figcaption className="hero-peephole-caption">

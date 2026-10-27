@@ -407,7 +407,7 @@
 .hero-visual-anchor {
   position: relative;
   width: 100%;
-  max-width: 19rem;
+  max-width: min(24rem, 94vw);
   margin-inline: auto;
 }
 

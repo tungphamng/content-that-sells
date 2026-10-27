@@ -9,7 +9,7 @@ import { BRAND_LOGO_SRC } from "@/lib/constants";
 import { scrollToHash } from "@/lib/scroll-to-section";
 import { cn } from "@/lib/utils/cn";
 
-const links = [
+const defaultLinks = [
   { href: "#loi-ich", label: "Lợi ích" },
   { href: "#lo-trinh", label: "Nội dung" },
   { href: "#faq", label: "FAQ" },
@@ -40,7 +40,11 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-export default function HeaderSection() {
+export default function HeaderSection({
+  links = defaultLinks,
+}: {
+  links?: { href: string; label: string }[];
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
