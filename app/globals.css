@@ -628,3 +628,16 @@
   flex-shrink: 0;
   accent-color: var(--color-gold, #d4af37);
 }
+
+@media (min-width: 1024px) {
+  .register-sticky-form {
+    position: sticky;
+    top: 6.5rem;
+    align-self: start;
+    max-height: calc(100vh - 7.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 0.25rem;
+  }
+}

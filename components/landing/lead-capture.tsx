@@ -7,15 +7,11 @@ import { RegisterForm } from "@/components/landing/register-form";
 
 export default function LeadCaptureSection() {
   return (
-    <Section
-      id="register-form"
-      variant="mesh"
-      className="relative overflow-hidden"
-    >
+    <Section id="register-form" variant="mesh" className="relative">
       <AmbientOrbs variant="cta" />
       <SectionContainer width="wide" className="relative">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <Reveal>
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <Reveal className="lg:pt-2">
             <p className="section-label">
               Giữ chỗ ngay
             </p>
@@ -34,9 +30,9 @@ export default function LeadCaptureSection() {
             </ul>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <div className="register-sticky-form">
             <RegisterForm />
-          </Reveal>
+          </div>
         </div>
       </SectionContainer>
     </Section>
