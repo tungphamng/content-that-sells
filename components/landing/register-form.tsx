@@ -15,6 +15,8 @@ import {
 import { submitSboEventRegistration } from "@/lib/sbo-event-register";
 import { cn } from "@/lib/utils/cn";
 
+const TOTAL_STEPS = 2;
+
 function RadioFieldGroup({
   legend,
   name,
@@ -53,7 +55,6 @@ function RadioFieldGroup({
                 value={option}
                 checked={value === option}
                 onChange={() => onChange(option)}
-                required={index === 0 && !value}
                 disabled={disabled}
               />
               <span>{option}</span>
@@ -65,6 +66,30 @@ function RadioFieldGroup({
   );
 }
 
+function StepIndicator({ step }: { step: number }) {
+  return (
+    <div
+      className="mb-5 flex items-center justify-between gap-4"
+      aria-label={`Bước ${step} trên ${TOTAL_STEPS}`}
+    >
+      <p className="text-xs font-semibold uppercase tracking-wider text-[#9CA3AF]">
+        Bước {step}/{TOTAL_STEPS}
+      </p>
+      <div className="flex gap-2" aria-hidden>
+        {Array.from({ length: TOTAL_STEPS }, (_, i) => (
+          <span
+            key={i}
+            className={cn(
+              "h-1.5 w-8 rounded-full transition-colors duration-300",
+              i + 1 <= step ? "bg-white" : "bg-white/20",
+            )}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function RegisterForm({
   className,
   idPrefix = "",
@@ -72,6 +97,7 @@ export function RegisterForm({
   className?: string;
   idPrefix?: string;
 }) {
+  const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -86,6 +112,7 @@ export function RegisterForm({
   const p = idPrefix ? `${idPrefix}-` : "";
 
   function resetForm() {
+    setStep(1);
     setName("");
     setEmail("");
     setPhone("");
@@ -95,26 +122,52 @@ export function RegisterForm({
     setProblemToSolve("");
   }
 
+  function validateStep1() {
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedPhone = phone.trim();
+    if (!trimmedName || !trimmedEmail || !trimmedPhone) {
+      setError("Vui lòng điền họ tên, số điện thoại và email.");
+      return false;
+    }
+    return true;
+  }
+
+  function validateStep2() {
+    const trimmedIndustry = businessIndustry.trim();
+    const trimmedProblem = problemToSolve.trim();
+    if (!trimmedIndustry || !teamSize || !monthlyRevenue || !trimmedProblem) {
+      setError("Vui lòng điền đầy đủ các trường bắt buộc.");
+      return false;
+    }
+    return true;
+  }
+
+  function goToStep2() {
+    if (!validateStep1()) return;
+    setError(null);
+    setStep(2);
+  }
+
+  function goToStep1() {
+    setError(null);
+    setStep(1);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (step === 1) {
+      goToStep2();
+      return;
+    }
+
+    if (!validateStep1() || !validateStep2()) return;
+
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
     const trimmedPhone = phone.trim();
     const trimmedIndustry = businessIndustry.trim();
     const trimmedProblem = problemToSolve.trim();
-
-    if (
-      !trimmedName ||
-      !trimmedEmail ||
-      !trimmedPhone ||
-      !trimmedIndustry ||
-      !teamSize ||
-      !monthlyRevenue ||
-      !trimmedProblem
-    ) {
-      setError("Vui lòng điền đầy đủ các trường bắt buộc.");
-      return;
-    }
 
     setError(null);
     setSubmitting(true);
@@ -158,116 +211,130 @@ export function RegisterForm({
           className,
         )}
       >
-        <div className="flex flex-col gap-4">
-          <div>
-            <label
-              htmlFor={`${p}name`}
-              className="mb-2 block text-sm font-medium text-[var(--foreground)]"
-            >
-              Họ và tên *
-            </label>
-            <input
-              id={`${p}name`}
-              name="name"
-              autoComplete="name"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Nguyễn Văn A"
+        <StepIndicator step={step} />
+
+        {step === 1 ? (
+          <div className="flex flex-col gap-4">
+            <p className="text-sm text-[var(--color-text-muted)]">
+              Thông tin liên hệ để gửi link Zoom và quà tặng.
+            </p>
+            <div>
+              <label
+                htmlFor={`${p}name`}
+                className="mb-2 block text-sm font-medium text-[var(--foreground)]"
+              >
+                Họ và tên *
+              </label>
+              <input
+                id={`${p}name`}
+                name="name"
+                autoComplete="name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Nguyễn Văn A"
+                disabled={submitting}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor={`${p}phone`}
+                className="mb-2 block text-sm font-medium text-[var(--foreground)]"
+              >
+                Số điện thoại *
+              </label>
+              <input
+                id={`${p}phone`}
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="09xx xxx xxx"
+                disabled={submitting}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor={`${p}email`}
+                className="mb-2 block text-sm font-medium text-[var(--foreground)]"
+              >
+                Email *
+              </label>
+              <input
+                id={`${p}email`}
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="ban@email.com"
+                disabled={submitting}
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-4">
+            <p className="text-sm text-[var(--color-text-muted)]">
+              Vài câu hỏi ngắn để workshop sát nhu cầu của bạn.
+            </p>
+            <div>
+              <label
+                htmlFor={`${p}business-industry`}
+                className="mb-2 block text-sm font-medium text-[var(--foreground)]"
+              >
+                Ngành kinh doanh của bạn là gì? *
+              </label>
+              <input
+                id={`${p}business-industry`}
+                name="businessIndustry"
+                type="text"
+                required
+                value={businessIndustry}
+                onChange={(e) => setBusinessIndustry(e.target.value)}
+                disabled={submitting}
+              />
+            </div>
+            <RadioFieldGroup
+              idPrefix={p}
+              legend="Doanh nghiệp của bạn hiện tại có bao nhiêu người?"
+              name={`${p}team-size`}
+              options={SBO_TEAM_SIZE_OPTIONS}
+              value={teamSize}
+              onChange={setTeamSize}
               disabled={submitting}
             />
-          </div>
-          <div>
-            <label
-              htmlFor={`${p}phone`}
-              className="mb-2 block text-sm font-medium text-[var(--foreground)]"
-            >
-              Số điện thoại *
-            </label>
-            <input
-              id={`${p}phone`}
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              required
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="09xx xxx xxx"
+            <RadioFieldGroup
+              idPrefix={p}
+              legend="Doanh thu trung bình/tháng của bạn là bao nhiêu?"
+              name={`${p}monthly-revenue`}
+              options={SBO_MONTHLY_REVENUE_OPTIONS}
+              value={monthlyRevenue}
+              onChange={setMonthlyRevenue}
               disabled={submitting}
             />
+            <div>
+              <label
+                htmlFor={`${p}problem`}
+                className="mb-2 block text-sm font-medium text-[var(--foreground)]"
+              >
+                Vấn đề bạn muốn giải quyết là gì? *
+              </label>
+              <input
+                id={`${p}problem`}
+                name="problemToSolve"
+                type="text"
+                required
+                value={problemToSolve}
+                onChange={(e) => setProblemToSolve(e.target.value)}
+                disabled={submitting}
+              />
+            </div>
           </div>
-          <div>
-            <label
-              htmlFor={`${p}email`}
-              className="mb-2 block text-sm font-medium text-[var(--foreground)]"
-            >
-              Email *
-            </label>
-            <input
-              id={`${p}email`}
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="ban@email.com"
-              disabled={submitting}
-            />
-          </div>
-          <div>
-            <label
-              htmlFor={`${p}business-industry`}
-              className="mb-2 block text-sm font-medium text-[var(--foreground)]"
-            >
-              Ngành kinh doanh của bạn là gì? *
-            </label>
-            <input
-              id={`${p}business-industry`}
-              name="businessIndustry"
-              type="text"
-              required
-              value={businessIndustry}
-              onChange={(e) => setBusinessIndustry(e.target.value)}
-              disabled={submitting}
-            />
-          </div>
-          <RadioFieldGroup
-            idPrefix={p}
-            legend="Doanh nghiệp của bạn hiện tại có bao nhiêu người?"
-            name={`${p}team-size`}
-            options={SBO_TEAM_SIZE_OPTIONS}
-            value={teamSize}
-            onChange={setTeamSize}
-            disabled={submitting}
-          />
-          <RadioFieldGroup
-            idPrefix={p}
-            legend="Doanh thu trung bình/tháng của bạn là bao nhiêu?"
-            name={`${p}monthly-revenue`}
-            options={SBO_MONTHLY_REVENUE_OPTIONS}
-            value={monthlyRevenue}
-            onChange={setMonthlyRevenue}
-            disabled={submitting}
-          />
-          <div>
-            <label
-              htmlFor={`${p}problem`}
-              className="mb-2 block text-sm font-medium text-[var(--foreground)]"
-            >
-              Vấn đề bạn muốn giải quyết là gì? *
-            </label>
-            <input
-              id={`${p}problem`}
-              name="problemToSolve"
-              type="text"
-              required
-              value={problemToSolve}
-              onChange={(e) => setProblemToSolve(e.target.value)}
-              disabled={submitting}
-            />
-          </div>
-        </div>
+        )}
+
         {error ? (
           <p
             className="mt-4 rounded-xl border border-[#fecaca] bg-[#fef2f2] px-3 py-2 text-sm text-[#991b1b]"
@@ -276,15 +343,35 @@ export function RegisterForm({
             {error}
           </p>
         ) : null}
-        <Button
-          type="submit"
-          variant="red"
-          size="lg"
-          disabled={submitting}
-          className="mt-6 w-full rounded-full glow-pulse-red transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(255,255,255,0.25)] disabled:opacity-65"
-        >
-          {submitting ? "Đang gửi…" : "Đăng ký tham gia"}
-        </Button>
+
+        <div className="mt-6 flex flex-col gap-3">
+          {step === 2 ? (
+            <Button
+              type="button"
+              variant="secondary"
+              size="lg"
+              disabled={submitting}
+              className="w-full rounded-full whitespace-nowrap"
+              onClick={goToStep1}
+            >
+              Quay lại
+            </Button>
+          ) : null}
+          <Button
+            type="submit"
+            variant="red"
+            size="lg"
+            disabled={submitting}
+            className="w-full rounded-full whitespace-nowrap glow-pulse-red transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(255,255,255,0.25)] disabled:opacity-65"
+          >
+            {submitting
+              ? "Đang gửi…"
+              : step === 1
+                ? "Tiếp tục"
+                : "Đăng ký tham gia"}
+          </Button>
+        </div>
+
         <p className="mt-4 text-center text-xs leading-relaxed text-[#9CA3AF]">
           Bằng việc gửi form này, bạn đồng ý nhận thông tin từ chúng tôi về
           chương trình đăng ký và các thông tin cập nhật khác. Bạn có thể hủy

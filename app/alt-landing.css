@@ -73,10 +73,13 @@
   position: sticky;
   top: 6.5rem;
   align-self: start;
-  max-height: calc(100vh - 7.5rem);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-gutter: stable;
+  max-height: none;
+  overflow: visible;
+}
+
+.alt-sticky-form .kit-form-wrapper {
+  max-height: none;
+  overflow: visible;
 }
 
 .alt-mobile-cta {
