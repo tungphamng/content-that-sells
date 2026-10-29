@@ -7,8 +7,63 @@ import {
   EVENT_ZALO_GROUP_URL,
   SBO_EVENT_REGISTER_API_URL,
 } from "@/lib/constants";
+import {
+  buildSboCustomData,
+  SBO_MONTHLY_REVENUE_OPTIONS,
+  SBO_TEAM_SIZE_OPTIONS,
+} from "@/lib/sbo-event-form-fields";
 import { submitSboEventRegistration } from "@/lib/sbo-event-register";
 import { cn } from "@/lib/utils/cn";
+
+function RadioFieldGroup({
+  legend,
+  name,
+  options,
+  value,
+  onChange,
+  disabled,
+  idPrefix,
+}: {
+  legend: string;
+  name: string;
+  options: readonly string[];
+  value: string;
+  onChange: (value: string) => void;
+  disabled?: boolean;
+  idPrefix: string;
+}) {
+  return (
+    <fieldset className="border-0 p-0">
+      <legend className="mb-2 block text-sm font-medium text-[var(--foreground)]">
+        {legend} *
+      </legend>
+      <div className="flex flex-col gap-2 rounded-xl border border-[var(--color-border)] bg-[rgba(0,0,0,0.25)] p-3">
+        {options.map((option, index) => {
+          const id = `${idPrefix}${name}-opt-${index}`;
+          return (
+            <label
+              key={option}
+              htmlFor={id}
+              className="flex cursor-pointer items-start gap-2 text-sm leading-snug text-[var(--foreground)]"
+            >
+              <input
+                id={id}
+                type="radio"
+                name={name}
+                value={option}
+                checked={value === option}
+                onChange={() => onChange(option)}
+                required={index === 0 && !value}
+                disabled={disabled}
+              />
+              <span>{option}</span>
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+}
 
 export function RegisterForm({
   className,
@@ -20,19 +75,44 @@ export function RegisterForm({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [businessIndustry, setBusinessIndustry] = useState("");
+  const [teamSize, setTeamSize] = useState("");
+  const [monthlyRevenue, setMonthlyRevenue] = useState("");
+  const [problemToSolve, setProblemToSolve] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const [zaloJoinUrl, setZaloJoinUrl] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const p = idPrefix ? `${idPrefix}-` : "";
 
+  function resetForm() {
+    setName("");
+    setEmail("");
+    setPhone("");
+    setBusinessIndustry("");
+    setTeamSize("");
+    setMonthlyRevenue("");
+    setProblemToSolve("");
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
     const trimmedPhone = phone.trim();
-    if (!trimmedName || !trimmedEmail || !trimmedPhone) {
-      setError("Vui lòng điền họ tên, email và số Zalo.");
+    const trimmedIndustry = businessIndustry.trim();
+    const trimmedProblem = problemToSolve.trim();
+
+    if (
+      !trimmedName ||
+      !trimmedEmail ||
+      !trimmedPhone ||
+      !trimmedIndustry ||
+      !teamSize ||
+      !monthlyRevenue ||
+      !trimmedProblem
+    ) {
+      setError("Vui lòng điền đầy đủ các trường bắt buộc.");
       return;
     }
 
@@ -45,7 +125,12 @@ export function RegisterForm({
           name: trimmedName,
           phone: trimmedPhone,
           email: trimmedEmail,
-          customData: {},
+          customData: buildSboCustomData({
+            businessIndustry: trimmedIndustry,
+            teamSize,
+            monthlyRevenue,
+            problemToSolve: trimmedProblem,
+          }),
         },
       );
       if (!ok || !data.success) {
@@ -54,9 +139,7 @@ export function RegisterForm({
       const joinUrl = data.redirectTo?.trim() || EVENT_ZALO_GROUP_URL.trim();
       setZaloJoinUrl(joinUrl || null);
       setShowSuccess(true);
-      setName("");
-      setEmail("");
-      setPhone("");
+      resetForm();
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Không gửi được đăng ký.",
@@ -96,6 +179,25 @@ export function RegisterForm({
           </div>
           <div>
             <label
+              htmlFor={`${p}phone`}
+              className="mb-2 block text-sm font-medium text-[var(--foreground)]"
+            >
+              Số điện thoại *
+            </label>
+            <input
+              id={`${p}phone`}
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="09xx xxx xxx"
+              disabled={submitting}
+            />
+          </div>
+          <div>
+            <label
               htmlFor={`${p}email`}
               className="mb-2 block text-sm font-medium text-[var(--foreground)]"
             >
@@ -115,20 +217,53 @@ export function RegisterForm({
           </div>
           <div>
             <label
-              htmlFor={`${p}phone`}
+              htmlFor={`${p}business-industry`}
               className="mb-2 block text-sm font-medium text-[var(--foreground)]"
             >
-              Số Zalo *
+              Ngành kinh doanh của bạn là gì? *
             </label>
             <input
-              id={`${p}phone`}
-              name="phone"
-              type="tel"
-              autoComplete="tel"
+              id={`${p}business-industry`}
+              name="businessIndustry"
+              type="text"
               required
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="09xx xxx xxx"
+              value={businessIndustry}
+              onChange={(e) => setBusinessIndustry(e.target.value)}
+              disabled={submitting}
+            />
+          </div>
+          <RadioFieldGroup
+            idPrefix={p}
+            legend="Doanh nghiệp của bạn hiện tại có bao nhiêu người?"
+            name={`${p}team-size`}
+            options={SBO_TEAM_SIZE_OPTIONS}
+            value={teamSize}
+            onChange={setTeamSize}
+            disabled={submitting}
+          />
+          <RadioFieldGroup
+            idPrefix={p}
+            legend="Doanh thu trung bình/tháng của bạn là bao nhiêu?"
+            name={`${p}monthly-revenue`}
+            options={SBO_MONTHLY_REVENUE_OPTIONS}
+            value={monthlyRevenue}
+            onChange={setMonthlyRevenue}
+            disabled={submitting}
+          />
+          <div>
+            <label
+              htmlFor={`${p}problem`}
+              className="mb-2 block text-sm font-medium text-[var(--foreground)]"
+            >
+              Vấn đề bạn muốn giải quyết là gì? *
+            </label>
+            <input
+              id={`${p}problem`}
+              name="problemToSolve"
+              type="text"
+              required
+              value={problemToSolve}
+              onChange={(e) => setProblemToSolve(e.target.value)}
               disabled={submitting}
             />
           </div>
@@ -148,7 +283,7 @@ export function RegisterForm({
           disabled={submitting}
           className="mt-6 w-full rounded-full glow-pulse-red transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(255,255,255,0.25)] disabled:opacity-65"
         >
-          {submitting ? "Đang gửi…" : "Xác nhận đăng ký miễn phí"}
+          {submitting ? "Đang gửi…" : "Đăng ký tham gia"}
         </Button>
         <p className="mt-4 text-center text-xs leading-relaxed text-[#9CA3AF]">
           Bằng việc gửi form này, bạn đồng ý nhận thông tin từ chúng tôi về

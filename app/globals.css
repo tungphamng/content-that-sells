@@ -618,3 +618,13 @@
   border: 1px solid var(--color-border);
   background: rgba(0, 0, 0, 0.4);
 }
+
+.kit-form-wrapper input[type="radio"],
+.kit-form-wrapper input[type="checkbox"] {
+  width: auto;
+  min-height: auto;
+  margin-top: 0.2rem;
+  padding: 0;
+  flex-shrink: 0;
+  accent-color: var(--color-gold, #d4af37);
+}
